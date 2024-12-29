@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>web barang hilang</title>
+  
+
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Informasi Kehilangan Barang</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #a267e7;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 90%;
+            margin: auto;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        .found-items, .add-item {
+            background-color: #9167e7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+        .found-items div {
+            border-bottom: 1px solid white;
+            margin-bottom: 10px;
+            padding-bottom: 10px;
+        }
+        .form-input {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 10px;
+        }
+        .form-input label {
+            margin-bottom: 5px;
+        }
+        .form-input input, button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+        }
+        button {
+            background-color: #7c48c3;
+            color: white;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #5a3495;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Selamat datang di informasi kehilangan barang</h1>
+        <h2>Universitas Amikom</h2>
+        <div class="found-items" id="found-items">
+            <h3>Informasi barang yang ditemukan</h3>
+        </div>
+        <div class="add-item">
+            <h3>Tambahkan informasi</h3>
+            <form id="add-item-form">
+                <div class="form-input">
+                    <label for="item-name">Barang yang ditemukan</label>
+                    <input type="text" id="item-name" required>
+                </div>
+                <div class="form-input">
+                    <label for="finder-name">Nama Penemu</label>
+                    <input type="text" id="finder-name" required>
+                </div>
+                <div class="form-input">
+                    <label for="found-location">Tempat Ditemukan</label>
+                    <input type="text" id="found-location" required>
+                </div>
+                <div class="form-input">
+                    <label for="found-date">Tanggal Ditemukan</label>
+                    <input type="date" id="found-date" required>
+                </div>
+                <div class="form-input">
+                    <label for="contact-info">Kontak yang dapat dihubungi</label>
+                    <input type="text" id="contact-info" required>
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+        <footer>
+            <p>@ Amikom Yogyakarta - simpan dan hati-hati dalam menyimpan barang bawaan anda</p>
+        </footer>
+    </div>
+    <script>
+        const foundItemsContainer = document.getElementById('found-items');
+        const addItemForm = document.getElementById('add-item-form');
+
+        addItemForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            // Get form data
+            const itemName = document.getElementById('item-name').value;
+            const finderName = document.getElementById('finder-name').value;
+            const foundLocation = document.getElementById('found-location').value;
+            const foundDate = document.getElementById('found-date').value;
+            const contactInfo = document.getElementById('contact-info').value;
+
+            // Create a new item entry
+            const newItem = document.createElement('div');
+            newItem.innerHTML = `
+                <p>Barang yang ditemukan: ${itemName}</p>
+                <p>Penemu Barang: ${finderName}</p>
+                <p>Tempat Ditemukan: ${foundLocation}</p>
+                <p>Tanggal Ditemukan: ${foundDate}</p>
+                <p>Kontak yang dapat dihubungi: ${contactInfo}</p>
+                <button class="delete-button">Hapus</button>
+            `;
+
+            // Add delete functionality
+            newItem.querySelector('.delete-button').addEventListener('click', function() {
+                newItem.remove();
+            });
+
+            // Append to container
+            foundItemsContainer.appendChild(newItem);
+
+            // Clear the form
+            addItemForm.reset();
+        });
+    </script>
+</body>
+</html>
+<!-- partial -->
+  
+</body>
+</html>
